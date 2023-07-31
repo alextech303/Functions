@@ -5,11 +5,11 @@
 
 using namespace std;
 
-
+// без аргументов
+	//Вычислить сумму всех четных чисел в диапазоне от 123 до 347 
 int function_1() {
 	int sum = 0;
-	// без аргументов
-	//Вычислить сумму всех четных чисел в диапазоне от 123 до 347 
+	
 	for (int i = 123; i <= 347; i++) {
 		if (i % 2 == 0) {
 			sum += i;
@@ -31,26 +31,21 @@ void  function_2(int a, int b, int c) {
 
 }
 
-int function_3(int a, int b, int c) {
-	int argX;
-	int arrayArg[3];
-	for (int i = 0; i < 3; i++) {
-
-		cout << "Введите значение " << i + 1 << "-го числа" << endl;
-		cin >> argX;
-		arrayArg[i] = argX;
-	}
-
-	int sum = a + b + c;
-	int* px = arrayArg;
+int function_3(int a, int b, int c ) {
+//Вычислить сумму трех чисел и заменить значение 1-го аргумента на значение суммы по ссылке:
+	int sum= a + b + c;
+		
+	int *pa = &sum;
+	a = *pa;
+	cout << "Значение 1-го аргумента после присвоения значения по ссылке &sum = " << a << endl;
 	return 0;
 }
 
 int main() {
 	setlocale(LC_CTYPE, "Russian");
 
-//	printf_s("Сумма всех четных чисел в диапазоне от 123 до 347 = %d  \n\n", function_1());
-// function_2:
+
+// function_2,function_3:
 	int argX;
 	int arrayArg[3];
 	for (int i = 0; i < 3; i++) {
@@ -64,7 +59,9 @@ int main() {
 	int b = *++px;
 	int c = *++px;
 	
-	function_2(a, b, c);
+	//function_2(a, b, c);
+
+	//function_3(a,b,c);
 
 	system("pause");
 	return 0;
