@@ -41,36 +41,36 @@ int function_3(int a, int b, int c ) {
 	return 0;
 }
 
-void swap(int a, int b) {
-	//cout << "a = " << a << "; b = " << b << endl;
-	int t = a;
-	a = b;
-	b = t;
-
-	//cout << "a = " << a << "; b = " << b << endl;
-	cout << "___________________________________" << endl;;
-}
-
-void swap2(int *x, int *y) {
-//	cout << "x = " << *x << "; y = " << *y << endl;
-	int t = *x;
-	*x = *y;
-	*y = t;
-
-	//cout << "x = " << *x << "; y = " << *y << endl;
-	cout << "___________________________________" << endl;;
-
-}
-
-void swap3(int &x, int &y) {
-	cout << "x = " << x << "; y = " << y << endl;
-	int t = x;
-	x = y;
-	y = t;
-
-	cout << "x = " << x << "; y = " << y << endl;
-	cout << "___________________________________";
-}
+//void swap(int a, int b) {
+//	//cout << "a = " << a << "; b = " << b << endl;
+//	int t = a;
+//	a = b;
+//	b = t;
+//
+//	//cout << "a = " << a << "; b = " << b << endl;
+//	cout << "___________________________________" << endl;;
+//}
+//
+//void swap2(int *x, int *y) {
+////	cout << "x = " << *x << "; y = " << *y << endl;
+//	int t = *x;
+//	*x = *y;
+//	*y = t;
+//
+//	//cout << "x = " << *x << "; y = " << *y << endl;
+//	cout << "___________________________________" << endl;;
+//
+//}
+//
+//void swap3(int &x, int &y) {
+//	cout << "x = " << x << "; y = " << y << endl;
+//	int t = x;
+//	x = y;
+//	y = t;
+//
+//	cout << "x = " << x << "; y = " << y << endl;
+//	cout << "___________________________________";
+//}
 
 int function_4(int *array,int size) {
 	
@@ -89,41 +89,73 @@ int function_4(int *array,int size) {
 
 }
 
-int* function_5(int** array, int size) {
-	int count = 0;
-	int *pmin=new int [size];
+int* function_5(int** arrayNumber, int size_1, int size_2) {
+	
+	int n = 0;
+	int k = 0;
+	for (int i = 0; i < size_1; i++) {
+		arrayNumber[i] = new int[size_2];
+	}
 
-	for (int i = 0; i < size; i++) {
+	int* pmincolumn = new int[size_1 * size_2];
 
-		for (int j = 0; j < size; j++) {
-			if (array[i][j] % 2 == 0) {
-				count++;
-			}
-			cout << array[i][j] << "\t";
-			
+	int** arrayNumber_2 = arrayNumber;
+
+	int x = 1;
+	for (int i = 0; i < size_1; i++) {
+		for (int j = 0; j < size_2; j++) {
+			arrayNumber_2[i][j] = rand() % 100;
+			//arrayNumber_2[i][j] = x++;
+
+		}
+	}
+
+	for (int i = 0; i < size_1; i++) {
+		for (int j = 0; j < size_2; j++) {
+			cout << arrayNumber_2[i][j] << "\t";
+
 		}
 		cout << endl;
-	}
-	int* parr = new int[count];
-	int k = 0;
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-			if (array[i][j] % 2 == 0) {
-				parr[k] = array[i][j];
-				k++;
-			}
 
+	}
+
+
+	for (int j = 0; j < size_2; j++) {
+		for (int i = 0; i < size_1; i++) {
+			pmincolumn[n++] = arrayNumber_2[i][j];
 		}
 	}
-	cout << "______________" << endl;
-	cout << "массив из четных чисел :" << endl;
-	for (int i = 0; i < count; i++) {
-		cout << *parr++ << "\t";
+	
+	int length = size_1 * size_2;
+	
+	while (length--)
+	{
+		bool swapped = false;
+
+		for (int i = 0; i < length; i++)
+		{
+			if (pmincolumn[i] > pmincolumn[i + 1])
+			{
+				swap(pmincolumn[i], pmincolumn[i + 1]);
+				swapped = true;
+			}
+		}
+
+		if (swapped == false)
+			break;
 	}
-	cout << endl;
-	cout << "________________" << endl;
-	return parr;
+
+
+	
+
+	int* pmincolumn_2 = new int[size_2];
+
+
+	
+	return pmincolumn;
 }
+
+	
 
 int main() {
 	setlocale(LC_CTYPE, "Russian");
@@ -165,67 +197,30 @@ int main() {
 	int pa = function_4(array, 10);
 	cout << "pa = " << pa << endl;
 	*/
-	/*cout << "¬ведите количество указателей на одномерные массивы : " << endl;
-	int j;
-	cin >> j;*/
-	/*int z = 11;
-	int*  pz = &z;
-	int** ppz = &pz;
-	int*** pppz = &ppz;
-	cout << "z = " << z << endl;
-	cout << "pz = " << pz << endl;
-	cout << "ppz = " << ppz << endl;
-	cout << "pppz = " << pppz << endl;
-	cout << " *pz = " << *pz << endl;
-	cout << "**ppz = " << **ppz << endl;
-	cout << "***pppz = " << ***pppz << endl;
+	cout << "¬ведите количество указателей на одномерные массивы : " << endl;
+	int size_1;
+	cin >> size_1 ;
+	cout << endl;
 
-	pz = new int[j];
-	for (int i = 0; i < j; i++) {
-		cout << "¬ведите " << i << " элемент массива" << endl;
-		cin >> pz[i];
-
-	}
-	cout << "_______________" << endl;
-	for (int i = 0; i < j; i++) {
-
-		cout << pz[i] << endl;;
-
-	}*/
+	cout << "¬ведите количество элементов в одномерном массиве : " << endl;
+	int size_2;
+	cin >> size_2;
+	cout << endl;
+	
+	
 	/*ѕри формировании двумерного динамического массива сначала выдел€етс€ 
 		пам€ть дл€ массива указателей на одномерные массивы, 
 		а затем в цикле с параметром выдел€етс€ пам€ть под одномерные массивы.*/
 		
-	/*int** array2;
-	array2 = new int* [j];
-	for (int i = 0; i < j; i++) {
-		array2[i] = new int[10];
+	//захватили пам€ть под size_1 указателей
+	int** arrayNumber = new int*	[size_1];
+	int* pmincolumnarray = function_5(arrayNumber, size_1, size_2);
+	cout << endl;
+	for (int i = 0; i < size_1*size_2; i++) {
+		cout << *pmincolumnarray++ << "\t";
+
 	}
-
-	int** array22;
-	array22 = array2;
-	for (int i = 0; i < j; i++) {
-		for (int j = 0; j < 10; j++) {
-			array22[i][j] = i * 100 + j;
-		}
-	}
-
-	for (int i = 0; i < j; i++) {
-		cout << "\n";
-		for (int j = 0; j < 10; j++) {
-			cout<<array22[i][j]<<"\t";
-		}
-	}
-	*/
-	int** ar = new int*	[3];
-	ar[0] = new int[5] {1,2,3,4,5};
-	ar[1] = new int[5] {6,7,8,9,10};
-	ar[2] = new int[5] {11,12,13,14,15};
-	
-
-	cout << function_5(ar, 3) << endl;;
-
-	
+		 
 	system("pause");
 	return 0;
 
