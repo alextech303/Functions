@@ -73,21 +73,33 @@ void function_3(int a, int b, int c ) {
 //}
 
 int function_4(int *array,int size) {
-	
+	bool stop;
 	int *pa = NULL;
 	
-	for (int i = size; i > 0 ; i--) {
+	for (int i = 0; i <size ; i++) {
 
 		
 		if (array[i]<0) {
 			int x = array[i];
 			pa = &x;
+			
 		}
 		
 	}
 	return *pa;
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 int* function_5(int** arrayNumber, int size_1, int size_2) {
 	/*int a = 0;
@@ -243,7 +255,7 @@ int main() {
 
 
 // function_2,function_3:
-	int argX;
+	/*int argX;
 	int arrayArg[3];
 	for (int i = 0; i < 3; i++) {
 		
@@ -254,11 +266,11 @@ int main() {
 	int *px = arrayArg;
 	int a = *px;
 	int b = *++px;
-	int c = *++px;
+	int c = *++px;*/
 	
 	//function_2(a, b, c);
 
-	function_3(a,b,c);
+	//function_3(a,b,c);
 
 	/*int x = 3; int y = 7;
 
@@ -274,10 +286,11 @@ int main() {
 	//swap3(x, y);
 
 	//function_4:
-	/*int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
-	int pa = function_4(array, 10);
+	int array[] = {1,-2,3,-4,5,7,10};
+	//*int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
+	int pa = function_4(array, 7);
 	cout << "pa = " << pa << endl;
-	*/
+	
 	/*cout << "Введите количество указателей на одномерные массивы : " << endl;
 	int size_1;
 	cin >> size_1;
@@ -306,8 +319,8 @@ int main() {
 
 	//}
 
-	int s = 10;
-	int& rs = s;// Это не самостоятельная переменная,
+	//int s = 10;
+	//int& rs = s;// Это не самостоятельная переменная,
 	//а просто ссылка на объект, уже живущий в памяти.
 
 	system("pause");
