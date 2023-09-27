@@ -73,44 +73,26 @@ void function_3(int a, int b, int c ) {
 //}
 
 int function_4(int *array,int size) {
-	bool stop;
+	
 	int *pa = NULL;
 	
 	for (int i = 0; i <size ; i++) {
-
 		
 		if (array[i]<0) {
-			int x = array[i];
+			int x = *(array+i);
 			pa = &x;
-			
 		}
-		
 	}
 	return *pa;
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
 int* function_5(int** arrayNumber, int size_1, int size_2) {
-	/*int a = 0;
-	int n = 0;
-	int k = 0;*/
-	int y = 5;
-	for (int i = 0; i < size_1; i++) {
+	
+		for (int i = 0; i < size_1; i++) {
 		arrayNumber[i] = new int[size_2];
 	}
 
-	int* pmincolumn = new int[size_1 * size_2];
+	//int* pmincolumn = new int[size_1 * size_2];
 
 	int** arrayNumber_2 = arrayNumber;
 
@@ -119,8 +101,8 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 		for (int j = 0; j < size_2; j++) {
 			//arrayNumber_2[i][j] = rand() % 100;
 			//arrayNumber_2[i][j] = x++;
-			*(*(arrayNumber_2 + i) + j) = x++;
-			//*(*(arrayNumber_2 + i) + j) = rand() % 100;;
+			//*(*(arrayNumber_2 + i) + j) = x++;
+			*(*(arrayNumber_2 + i) + j) = rand() % 100;;
 		}
 	}
 
@@ -134,90 +116,39 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 		cout << endl;
 
 	}
+	int h;
+	for (int i = 0; i < size_1 - 1; i++) {
+		for (int j = i + 1; j < size_2; j++) {
+			h = arrayNumber_2[i][j];
+			arrayNumber_2[i][j] = arrayNumber_2[j][i];
+			arrayNumber_2[j][i] = h;
+		}
+	}
 
-
+	int* minarray = new int[size_2];
+	//int t = 50000;
 	int* minArray = new int[size_2];
-	int pa = size_2;
-	for(int i=0;i< size_1;i++){
-	while (size_2) {
-		cout << *(*arrayNumber_2++) << "\t";
-			
-		pa--;
-	}
-	cout << endl;
-	}
+	for (int i = 0; i < size_1; i++) {
+		int t = 50000;
+		for (int j = 0; j < size_2; j++) {
+			//cout << arrayNumber_2[i][j] << "\t";
 
-			
-		
-		
-		//*minArray++ = min;
+			//cout << *(*(arrayNumber_2 + i) + j) << "\t";
+			if (arrayNumber_2[i][j] < t) 
+				 t = arrayNumber_2[i][j];
+		}
+		minArray[i] = t;
+		cout << "t = " << t << endl;
+		cout << endl;
+
+	}
 	
-	/*int lenght = size_2;
-	//for (int j = 0; j < size_2; j++) {
-		for (int i = 0; i < size_1; i++) {
-
-			pmincolumn[n++] = arrayNumber_2[i][j];
-		}
-	}
-
-	int* pmincolumn_2 = new int[size_2];
-	int min = 0;
-	for (int i = a; i < size_2; n++) {
-		while(lenght--){
-			if (pmincolumn[i] < pmincolumn[i + 1]) {
-				min = pmincolumn[i];
-				cout << pmincolumn[i];
-				i++;
-			}
-			}
-
-		pmincolumn_2[k++] = min;
-		a += size_2;
-
-	}*/
+			
+		
+	
 
 
-
-	//int lenght =size_1*size_2;
-	//
-	//while (lenght--) {
-
-	//	//bool swapped = false;
-
-	//	for (int i = 0; i < lenght; i++)
-	//	{
-	//		if (pmincolumn[i] > pmincolumn[i + 1])
-	//		{
-	//			swap(pmincolumn[i], pmincolumn[i + 1]);
-	//			//swapped = true;
-	//		}
-	//	}
-
-		//if (swapped == false)
-		//	break;
-
-
-
-
-	/*int length = size_1 * size_2;
-
-	while (length--)
-	{
-		bool swapped = false;
-
-		for (int i = 0; i < length; i++)
-		{
-			if (pmincolumn[i] > pmincolumn[i + 1])
-			{
-				swap(pmincolumn[i], pmincolumn[i + 1]);
-				swapped = true;
-			}
-		}
-
-		if (swapped == false)
-			break;
-	}*/
-
+	
 	return minArray;
 }
 
@@ -225,35 +156,7 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 
 int main() {
 	setlocale(LC_CTYPE, "Russian");
-	//int x [] = { 1,2,3,4,5,6,7,8 };
-	//cout << "x = " << x << endl;
-	//cout << "&x[0] = " << &x[0] << endl;
-	//cout << "&x[5] = " << &x[5] << endl;
-	//cout << "x+5 = " << x+5 << endl;
-	//int* px = x + 5;
-	//cout << "int* px = x + 5 ; " <<  endl;
-	//cout << "px = " << px << endl;
-	//int* py = x + 7;
-	//cout << "int* py = x + 7 ; " << endl;
-	//cout << "py = " << py << endl;
-	//cout << "py - px = " << py-px << endl;
-	//cout << "*py - *px = " << *py - *px << endl;//!!!!!!!!!!!!!!
-	//cout << "*px = " << *px << endl;
-	//cout << "*py = " << *py << endl;
-	//int i = (py == px);
-	//cout << i << endl;
-
-	//const double PI = 3.1415;
-	////double* pPI = &PI; // ошибка
-	//const double *pPI = &PI;
-	//cout << "*pPI = " << *pPI << endl;
-	////*pPI = 3.1415; // ошибка, но сам указатель можно менять:
-	//const double E = 2.71828;
-	//pPI = &E;
-	//cout << "*pPI = " << *pPI << endl;
 	
-
-
 // function_2,function_3:
 	/*int argX;
 	int arrayArg[3];
@@ -271,27 +174,14 @@ int main() {
 	//function_2(a, b, c);
 
 	//function_3(a,b,c);
-
-	/*int x = 3; int y = 7;
-
-	swap(x, y);
-	cout << "передача аргументов по значению:" << endl;
-	cout << "x = " << x << endl;
-	cout << "y = " << y << endl;
-	cout << "передача аргументов по значению через указатель:" << endl;
-
-	swap2(&x, &y);
-	cout << "x = " << x << endl;
-	cout << "y = " << y << endl;*/
-	//swap3(x, y);
-
-	//function_4:
-	int array[] = {1,-2,3,-4,5,7,10};
-	//*int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
-	int pa = function_4(array, 7);
-	cout << "pa = " << pa << endl;
 	
-	/*cout << "Введите количество указателей на одномерные массивы : " << endl;
+	//function_4:
+	//int array[] = {1,-2,3,-4,5,7,10};
+	//*int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
+	//int pa = function_4(array, 7);
+	//cout << "pa = " << pa << endl;
+	
+	cout << "Введите количество указателей на одномерные массивы : " << endl;
 	int size_1;
 	cin >> size_1;
 	cout << endl;
@@ -299,7 +189,7 @@ int main() {
 	cout << "Введите количество элементов в одномерном массиве : " << endl;
 	int size_2;
 	cin >> size_2;
-	cout << endl;*/
+	cout << endl;
 	
 	
 	/*При формировании двумерного динамического массива сначала выделяется 
@@ -307,13 +197,13 @@ int main() {
 		а затем в цикле с параметром выделяется память под одномерные массивы.*/
 		
 	//захватили память под size_1 указателей
-	/*int** arrayNumber = new int*	[size_1];
-	int* pmincolumnarray = function_5(arrayNumber, size_1, size_2);
-	cout << endl;*/
-	/*for (int i = 0; i < size_1*size_2; i++) {
-		cout << *pmincolumnarray++ << "\t";
+	int** arrayNumber = new int*	[size_1];
+	int* minArray = function_5(arrayNumber, size_1, size_2);
+	cout << endl;
+	for (int i = 0; i < size_2; i++) {
+		cout << *minArray++ << "\t";
 
-	}*/
+	}
 	/*for (int i = 0; i < size_1 * size_2; i++) {*/
 	//	cout << *pmincolumnarray++ << "\t";
 
