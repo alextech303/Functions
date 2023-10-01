@@ -5,9 +5,7 @@
 
 using namespace std;
 
-// без аргументов
-	//¬ычислить сумму всех четных чисел в диапазоне от 123 до 347 
-int function_1() {
+	int function_1() {
 	int sum = 0;
 	
 	for (int i = 123; i <= 347; i++) {
@@ -16,7 +14,6 @@ int function_1() {
 		}
 	}
 	return sum;
-	
 }
 
 
@@ -31,46 +28,16 @@ void  function_2(int a, int b, int c) {
 }
 
 void function_3(int a, int b, int c ) {
-//¬ычислить сумму трех чисел и заменить значение 1-го аргумента на значение суммы по ссылке:
 	int sum= a + b + c;
 
 	int& rsum=sum;
+
 	a = rsum;
 	
 	cout << "«начение 1-го аргумента после присвоени€ значени€ по ссылке = " << a << endl;
-	
 }
 
-//void swap(int a, int b) {
-//	//cout << "a = " << a << "; b = " << b << endl;
-//	int t = a;
-//	a = b;
-//	b = t;
-//
-//	//cout << "a = " << a << "; b = " << b << endl;
-//	cout << "___________________________________" << endl;;
-//}
-//
-//void swap2(int *x, int *y) {
-////	cout << "x = " << *x << "; y = " << *y << endl;
-//	int t = *x;
-//	*x = *y;
-//	*y = t;
-//
-//	//cout << "x = " << *x << "; y = " << *y << endl;
-//	cout << "___________________________________" << endl;;
-//
-//}
-//
-//void swap3(int &x, int &y) {
-//	cout << "x = " << x << "; y = " << y << endl;
-//	int t = x;
-//	x = y;
-//	y = t;
-//
-//	cout << "x = " << x << "; y = " << y << endl;
-//	cout << "___________________________________";
-//}
+
 
 int function_4(int *array,int size) {
 	
@@ -92,16 +59,13 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 		arrayNumber[i] = new int[size_2];
 	}
 
-	//int* pmincolumn = new int[size_1 * size_2];
-
+	
 	int** arrayNumber_2 = arrayNumber;
 
 	int x = 1;
 	for (int i = 0; i < size_1; i++) {
 		for (int j = 0; j < size_2; j++) {
-			//arrayNumber_2[i][j] = rand() % 100;
-			//arrayNumber_2[i][j] = x++;
-			//*(*(arrayNumber_2 + i) + j) = x++;
+			
 			*(*(arrayNumber_2 + i) + j) = rand() % 100;;
 		}
 	}
@@ -109,46 +73,36 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 
 	for (int i = 0; i < size_1; i++) {
 		for (int j = 0; j < size_2; j++) {
-			//cout << arrayNumber_2[i][j] << "\t";
-			cout << *(*(arrayNumber_2 +i)+j) << "\t";
+		cout << *(*(arrayNumber_2 +i)+j) << "\t";
 
 		}
 		cout << endl;
 
 	}
-	int h;
+	int tmp;
 	for (int i = 0; i < size_1 - 1; i++) {
 		for (int j = i + 1; j < size_2; j++) {
-			h = arrayNumber_2[i][j];
+			tmp = arrayNumber_2[i][j];
 			arrayNumber_2[i][j] = arrayNumber_2[j][i];
-			arrayNumber_2[j][i] = h;
+			arrayNumber_2[j][i] = tmp;
 		}
 	}
 
 	int* minarray = new int[size_2];
-	//int t = 50000;
+	
 	int* minArray = new int[size_2];
 	for (int i = 0; i < size_1; i++) {
-		int t = 50000;
+		int maxNumber = 100;
 		for (int j = 0; j < size_2; j++) {
-			//cout << arrayNumber_2[i][j] << "\t";
-
-			//cout << *(*(arrayNumber_2 + i) + j) << "\t";
-			if (arrayNumber_2[i][j] < t) 
-				 t = arrayNumber_2[i][j];
+						
+			if (arrayNumber_2[i][j] < maxNumber)
+				maxNumber = arrayNumber_2[i][j];
 		}
-		minArray[i] = t;
-		cout << "t = " << t << endl;
+		minArray[i] = maxNumber;
+		
 		cout << endl;
 
 	}
-	
-			
-		
-	
-
-
-	
 	return minArray;
 }
 
@@ -157,14 +111,16 @@ int* function_5(int** arrayNumber, int size_1, int size_2) {
 int main() {
 	setlocale(LC_CTYPE, "Russian");
 	
-// function_2,function_3:
+	//cout << "Cумма всех четных чисел в диапозоне от 123 до 347 :" << function_1() << endl;
+	
+		
 	/*int argX;
 	int arrayArg[3];
 	for (int i = 0; i < 3; i++) {
 		
-		cout << "¬ведите значение " << i+1 << "-го аргумента" << endl;
-		cin >> argX;
-			arrayArg[i] = argX;
+	cout << "¬ведите значение " << i+1 << "-го аргумента" << endl;
+	cin >> argX;
+	arrayArg[i] = argX;
 	}
 	int *px = arrayArg;
 	int a = *px;
@@ -176,9 +132,11 @@ int main() {
 	//function_3(a,b,c);
 	
 	//function_4:
-	//int array[] = {1,-2,3,-4,5,7,10};
-	//*int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
-	//int pa = function_4(array, 7);
+	// 
+	
+	//int array[10] = {-2,-5,3,4,5,6,7,8,9,10 };
+	//int array[10] = { -2,5,3,4,5,6,7,8,-9,-10 };
+	//int pa = function_4(array, 10);
 	//cout << "pa = " << pa << endl;
 	
 	cout << "¬ведите количество указателей на одномерные массивы : " << endl;
@@ -190,13 +148,6 @@ int main() {
 	int size_2;
 	cin >> size_2;
 	cout << endl;
-	
-	
-	/*ѕри формировании двумерного динамического массива сначала выдел€етс€ 
-		пам€ть дл€ массива указателей на одномерные массивы, 
-		а затем в цикле с параметром выдел€етс€ пам€ть под одномерные массивы.*/
-		
-	//захватили пам€ть под size_1 указателей
 	int** arrayNumber = new int*	[size_1];
 	int* minArray = function_5(arrayNumber, size_1, size_2);
 	cout << endl;
@@ -204,15 +155,7 @@ int main() {
 		cout << *minArray++ << "\t";
 
 	}
-	/*for (int i = 0; i < size_1 * size_2; i++) {*/
-	//	cout << *pmincolumnarray++ << "\t";
-
-	//}
-
-	//int s = 10;
-	//int& rs = s;// Ёто не самосто€тельна€ переменна€,
-	//а просто ссылка на объект, уже живущий в пам€ти.
-
+	
 	system("pause");
 	return 0;
 
